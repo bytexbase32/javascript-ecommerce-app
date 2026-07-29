@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+select {
+    width: 250px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid gray;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+}
+
+option {
+    color: black;
+    background: white;
+}
+
+
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+header {
+    background-color: rgb(234, 234, 234);
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+}
+
+header h1 {
+    font-weight: bold;
+}
+
+header h1::after {
+    color: black;
+    width: 100%;
+    height: 5px;
+    border-bottom: 2px solid black;
+}
+
+header nav {
+    width: 200px;
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bold;
+    gap: 20px;
+}
+
+header nav a {
+    padding: 12px 14px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+    transition: 0.6s;
+}
+
+header a:hover {
+    transform: scale(1.1);
+    color: black;
+    background-color: white;
+}
+
+main {
+    margin: 20px auto;
+    padding: 20px 30px;
+}
+
+#hero {
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#hero h2 {
+    font-size: 48px;
+}
+
+#hero p {
+    font-size: 20px;
+    color: #555;
+}
+
+#hero a {
+    padding: 20px 30px;
+    background: blue;
+    color: white;
+    border-radius: 999px;
+}
+
+#hero a:hover {
+    transform: scale(1.2);
+}
+
+#controls {
+    margin-top: 30px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#controls label {
+    font-size: 18px;
+    font-weight: bold;
+    
+}
+
+#search {
+    font-size: 16px;
+    padding: 12px 14px;
+    outline: none;
+    border-radius: 12px;
+}
+
+
+
+
+#products {
+    border-radius: 15px;
+    padding: 20px 25px;
+}
+
+#products h2 {
+    border-bottom: 2px solid black;
+    width: 300px;
+    margin:20px auto;
+}
+
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    height: 370px;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.product .product-image {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.product p , .product-info{
+    font-size: 14px;
+    margin: 12px;
+    font-weight: bold;
+}
+
+.product .add-to-cart {
+    border: none;
+    padding: 12px 14px;
+    color: white;
+    background-color: rgb(202, 176, 8);
+    border-radius: 12px;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.product .add-to-cart:hover {
+    background-color: rgb(170, 148, 0);
+}
+
+/* 
+<div class="product">
+    <img class="product-image"  src="assets/1.jpg" alt="">
+    <p class="product-title">product1</p>
+    <p class="product-description">usefull product</p>
+    <div class="product-info">
+        <span class="product-price">20$</span>
+        <span class="product-stock">129</span>
+    </div>
+    <button class="add-to-cart">Add to cart</button>
+</div>  */
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    header nav {
+        width: auto;
+    }
+
+    #hero h2 {
+        font-size: 32px;
+    }
+
+    #controls {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    #controls div {
+        width: 100%;
+    }
+
+    #search,
+    select {
+        width: 100%;
+    }
+}
+
+
+
+
+footer {
+    background-color: rgb(82, 82, 82);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+

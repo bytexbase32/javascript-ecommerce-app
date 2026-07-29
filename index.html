@@ -1,25 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanilla Store</title>
-    <link rel="stylesheet" href="css/style.css">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vanilla Store</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Vanilla Store</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+            </nav>
+        </header>
+        <main>
+            <section id="hero">
+                <h2>Welcome to Vanilla Store</h2>
+                <p>Find the best products at the best prices.</p>
+                <a href="#products">Shop Now</a>
+            </section>
+            <section id="controls">
+                <div>
+                    <label for="search">Search : </label>
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="Search products..."
+                    />
+                </div>
+                <div>
+                    <label for="category">Category : </label>
+                    <select id="category">
+                        <option value="all">All Categories</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="books">Books</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="sort">Sort : </label>
+                    <select id="sort">
+                        <option value="default">Sort By</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="rating">Rating</option>
+                        <option value="nameAZ">Name (A-Z)</option>
+                    </select>
+                </div>
+            </section>
+            <section id="products">
+                <h2>Our available products</h2>
+                <div id="grid-container">
+                    
+                </div>
+            </section>
+        </main>
+        <footer>© 2026 Vanilla Store. All rights reserved.</footer>
 
-</head>
-<body>
-    <header>
-        <h1>Vanilla Store</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="cart.html">Cart</a>
-        </nav>
-    </header>
-
-    <main>
-
-    </main>
-    
-    <script type="module" src="./js/app.js"></script>
-</body>
+        <script type="module" src="./js/app.js"></script>
+    </body>
 </html>
