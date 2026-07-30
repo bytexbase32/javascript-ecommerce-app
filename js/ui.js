@@ -1,3 +1,15 @@
+
+
+
+
+function renderProducts(productsContainer, products) {
+    if (products.length <= 0) return;
+    productsContainer.innerHTML = "";
+    products.forEach((product) => {
+        productsContainer.appendChild(createProduct(product));
+    });
+}
+
 function createProduct(product) {
     const productCard = document.createElement("div");
     productCard.classList.add("product");
@@ -45,4 +57,4 @@ function createProduct(product) {
     return productCard;
 }
 
-export { createProduct };
+export { createProduct, renderProducts };

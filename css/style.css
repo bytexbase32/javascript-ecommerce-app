@@ -45,7 +45,7 @@ header h1 {
 header h1::after {
     content: "";
     display: block;
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid blue;
     margin-top: 4px;
 }
 
@@ -78,14 +78,14 @@ main {
 }
 
 #hero {
-    padding: 80px 20px;
+    padding: 50px 20px ;
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 #hero h2 {
@@ -110,11 +110,10 @@ main {
 
 #controls {
     margin-top: 30px;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 20px;
 }
 
 #controls label {
@@ -135,13 +134,17 @@ main {
 
 #products {
     border-radius: 15px;
-    padding: 20px 25px;
+    padding: 10px 25px;
 }
 
 #products h2 {
-    border-bottom: 2px solid black;
-    width: 300px;
-    margin:20px auto;
+    border-bottom: 2px solid blue;
+    border-right: 2px solid blue;
+    border-left: 2px solid blue;
+    padding: 10px;
+    width: 340px;
+    margin:5px auto;
+    border-radius: 6px;
 }
 
 #grid-container {
