@@ -5,6 +5,7 @@ const productsContainer = document.getElementById("grid-container");
 
 const searchElement = document.querySelector("#search");
 const filterElement = document.querySelector("#filter");
+const sortElement = document.querySelector("#sort");
 
 let products = [];
 
@@ -42,6 +43,25 @@ filterElement.addEventListener("change", (e) => {
         productsContainer.innerHTML = "<p> No product found </p>";
     else UI.renderProducts(productsContainer, filteredProducts);
 });
+
+sortElement.addEventListener("change", (e) => {
+
+    if (e.target.value === "default") {
+        UI.renderProducts(productsContainer, products);
+        return;
+    }
+
+    const sortedProducts =[...products];
+    if (e.target.value === "price-asc")
+        sortedProducts.sort((product1, product2) => product1.price - product2.price);
+    else if (e.target.value === "price-desc")
+        sortedProducts.sort((product1, product2) => product2.price - product1.price);
+    else if (e.target.value === "rating")
+        sortedProducts.sort((product1, product2) => product2.rating - product1.rating);
+    else if (e.target.value === "nameAZ")
+        sortedProducts.sort((product1, product2) => product1.title.localeCompare(product2.title));
+    UI.renderProducts(productsContainer, sortedProducts);
+})
 
 function getMatching(match, products) {
     products = products.filter((product) => {
