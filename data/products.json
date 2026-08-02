@@ -58,5 +58,65 @@
     "image": "assets/images/headset.jpg",
     "rating": 4.5,
     "stock": 30
+  },
+  {
+    "id": 7,
+    "title": "Mechanical Keyboard",
+    "description": "RGB mechanical keyboard with blue switches.",
+    "price": 79.99,
+    "category": "Electronics",
+    "image": "assets/images/keyboard.jpg",
+    "rating": 4.8,
+    "stock": 25
+  },
+  {
+    "id": 8,
+    "title": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse for everyday use.",
+    "price": 29.99,
+    "category": "Electronics",
+    "image": "assets/images/mouse.jpg",
+    "rating": 4.6,
+    "stock": 42
+  },
+  {
+    "id": 9,
+    "title": "Cotton T-Shirt",
+    "description": "Comfortable 100% cotton t-shirt.",
+    "price": 19.99,
+    "category": "Clothing",
+    "image": "assets/images/tshirt.jpg",
+    "rating": 4.4,
+    "stock": 60
+  },
+  {
+    "id": 10,
+    "title": "Backpack",
+    "description": "Water-resistant backpack for school or travel.",
+    "price": 49.99,
+    "category": "Accessories",
+    "image": "assets/images/backpack.jpg",
+    "rating": 4.7,
+    "stock": 18
+  },
+  {
+    "id": 11,
+    "title": "JavaScript Book",
+    "description": "Beginner-friendly guide to modern JavaScript.",
+    "price": 34.99,
+    "category": "Books",
+    "image": "assets/images/javascript-book.jpg",
+    "rating": 4.9,
+    "stock": 15
+  },
+  {
+    "id": 12,
+    "title": "Gaming Headset",
+    "description": "Stereo headset with built-in microphone.",
+    "price": 59.99,
+    "category": "Electronics",
+    "image": "assets/images/headset.jpg",
+    "rating": 4.5,
+    "stock": 30
   }
 ]
