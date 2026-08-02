@@ -56,8 +56,7 @@ function filterProducts(filterType, products) {
 }
 
 function searchProducts(itemTosearch, products) {
-    if (itemTosearch === "")
-        return products;
+    if (itemTosearch === "") return products;
     return getMatching(itemTosearch, products);
 }
 

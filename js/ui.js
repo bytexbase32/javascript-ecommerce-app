@@ -14,6 +14,10 @@ function createProduct(product) {
     const productCard = document.createElement("div");
     productCard.classList.add("product");
 
+    productCard.addEventListener("click", e => {
+        location.href = `product.html?id=${product.id}`;
+    });
+    
     const productImage = document.createElement("img");
     productImage.classList.add("product-image");
     productImage.src = product.image;
