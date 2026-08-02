@@ -101,16 +101,6 @@
   },
   {
     "id": 11,
-    "title": "JavaScript Book",
-    "description": "Beginner-friendly guide to modern JavaScript.",
-    "price": 34.99,
-    "category": "Books",
-    "image": "assets/images/javascript-book.jpg",
-    "rating": 4.9,
-    "stock": 15
-  },
-  {
-    "id": 12,
     "title": "Gaming Headset",
     "description": "Stereo headset with built-in microphone.",
     "price": 59.99,

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vanilla Store</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Vanilla Store</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+            </nav>
+        </header>
+        <main>
+            <section id="hero">
+                <h2>Product Details</h2>
+            </section>
+            <section id="more-on-product">
+                <p id="no-product">No product found</p>
+                <div id="product-details">
+                    <img
+                        id="product-image"
+                        src=""
+                        alt=""
+                    />
+                    <div id="product-info">
+                        <h2 id="product-title"></h2>
+
+                        <p id="product-description"></p>
+
+                        <p id="product-price"></p>
+
+                        <p id="product-stock"></p>
+
+                        <p id="product-rating"></p>
+
+                        <p id="product-category"></p>
+
+                        <button id="add-to-cart"></button>
+                    </div>
+                </div>
+            </section>
+            <section id="related-products">
+                <h2>Related Products</h2>
+
+                <div id="related-products-grid" class="grid-container"></div>
+            </section>
+        </main>
+        <footer>© 2026 Vanilla Store. All rights reserved.</footer>
+
+        <script type="module" src="./js/product.js"></script>
+    </body>
+</html>
