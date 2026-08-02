@@ -2,7 +2,9 @@ import { getProducts } from "./api.js";
 import * as UI from "./ui.js";
 
 const productsContainer = document.getElementById("grid-container");
+
 const searchElement = document.querySelector("#search");
+const filterElement = document.querySelector("#filter");
 
 let products = [];
 
@@ -24,6 +26,21 @@ searchElement.addEventListener("input", async (e) => {
         document.querySelector("#products").innerHTML =
             "<p>Unable to load products</p>";
     }
+});
+
+filterElement.addEventListener("change", (e) => {
+    if (e.target.value === "all") {
+        UI.renderProducts(productsContainer, products);
+        return;
+    }
+
+    const filteredProducts = products.filter(
+        (product) => product.category === e.target.value,
+    );
+
+    if (filteredProducts.length === 0)
+        productsContainer.innerHTML = "<p> No product found </p>";
+    else UI.renderProducts(productsContainer, filteredProducts);
 });
 
 function getMatching(match, products) {
