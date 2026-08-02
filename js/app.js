@@ -9,59 +9,57 @@ const sortElement = document.querySelector("#sort");
 
 let products = [];
 
-searchElement.addEventListener("input", async (e) => {
-    try {
-        if (e.target.value.trim() === "") {
-            UI.renderProducts(productsContainer, products);
-            return;
-        }
+searchElement.addEventListener("input", updateProducts);
 
-        const searchedProducts = getMatching(e.target.value, products);
+filterElement.addEventListener("change", updateProducts);
 
-        if (searchedProducts.length === 0)
-            productsContainer.innerHTML = "<p>No products found</p>";
-        else {
-            UI.renderProducts(productsContainer, searchedProducts);
-        }
-    } catch (e) {
-        document.querySelector("#products").innerHTML =
-            "<p>Unable to load products</p>";
+sortElement.addEventListener("change", updateProducts);
+
+function updateProducts() {
+    let userProducts = [...products];
+    userProducts = searchProducts(searchElement.value.trim(), userProducts);
+    userProducts = filterProducts(filterElement.value, userProducts);
+    userProducts = sortProducts(sortElement.value, userProducts, userProducts);
+    if (userProducts.length === 0)
+        productsContainer.innerHTML = "<p>No products found</p>";
+    else {
+        UI.renderProducts(productsContainer, userProducts);
     }
-});
+}
 
-filterElement.addEventListener("change", (e) => {
-    if (e.target.value === "all") {
-        UI.renderProducts(productsContainer, products);
-        return;
-    }
+function sortProducts(sortingMethod, products, defaultSorting) {
+    if (sortingMethod === "default") return defaultSorting;
+
+    if (sortingMethod === "price-asc")
+        products.sort((product1, product2) => product1.price - product2.price);
+    else if (sortingMethod === "price-desc")
+        products.sort((product1, product2) => product2.price - product1.price);
+    else if (sortingMethod === "rating")
+        products.sort(
+            (product1, product2) => product2.rating - product1.rating,
+        );
+    else if (sortingMethod === "nameAZ")
+        products.sort((product1, product2) =>
+            product1.title.localeCompare(product2.title),
+        );
+    return products;
+}
+
+function filterProducts(filterType, products) {
+    if (filterType === "all") return products;
 
     const filteredProducts = products.filter(
-        (product) => product.category === e.target.value,
+        (product) => product.category === filterType,
     );
 
-    if (filteredProducts.length === 0)
-        productsContainer.innerHTML = "<p> No product found </p>";
-    else UI.renderProducts(productsContainer, filteredProducts);
-});
+    return filteredProducts;
+}
 
-sortElement.addEventListener("change", (e) => {
-
-    if (e.target.value === "default") {
-        UI.renderProducts(productsContainer, products);
-        return;
-    }
-
-    const sortedProducts =[...products];
-    if (e.target.value === "price-asc")
-        sortedProducts.sort((product1, product2) => product1.price - product2.price);
-    else if (e.target.value === "price-desc")
-        sortedProducts.sort((product1, product2) => product2.price - product1.price);
-    else if (e.target.value === "rating")
-        sortedProducts.sort((product1, product2) => product2.rating - product1.rating);
-    else if (e.target.value === "nameAZ")
-        sortedProducts.sort((product1, product2) => product1.title.localeCompare(product2.title));
-    UI.renderProducts(productsContainer, sortedProducts);
-})
+function searchProducts(itemTosearch, products) {
+    if (itemTosearch === "")
+        return products;
+    return getMatching(itemTosearch, products);
+}
 
 function getMatching(match, products) {
     products = products.filter((product) => {
