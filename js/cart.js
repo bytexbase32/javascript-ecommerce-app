@@ -153,6 +153,11 @@ async function init() {
     await displayCartItems();
     const cartElement = document.querySelector("#cart-count");
     UI.updateCartCount(cartElement);
+    const checkoutBtn = document.getElementById("checkout-btn");
+    checkoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("vanillaStore");
+        location.href = "success.html";
+    })
 }
 
 init();
