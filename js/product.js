@@ -1,5 +1,5 @@
 import { getProducts } from "./api.js";
-import {addToCart, initCart} from "./storage.js";
+import { addToCart, initCart } from "./storage.js";
 import * as UI from "./ui.js";
 
 // Get the query string (e.g., "?product=shoes&size=10")
@@ -16,7 +16,6 @@ let productDetails = null;
 
 async function init() {
     try {
-
         initCart();
         const cartElement = document.querySelector("#cart-count");
         UI.updateCartCount(cartElement);
@@ -46,20 +45,27 @@ async function init() {
         document.getElementById("product-price").innerText =
             "$" + productDetails.price;
         document.getElementById("product-stock").innerText =
-            "Stock " + productDetails.stock;
+            productDetails.stock > 0
+                ? "Stock " + productDetails.stock
+                : "Out of Stock";
         document.getElementById("product-rating").innerText =
             "⭐ " + productDetails.rating;
         document.getElementById("product-category").innerText =
             productDetails.category;
-        document.getElementById("add-to-cart").innerText = "Add to Cart";
+        document.getElementById("add-to-cart").innerText =
+            productDetails.stock > 0 ? "Add to Cart" :"Out of Stock";
         document
             .getElementById("add-to-cart")
             .addEventListener("click", (e) => {
                 e.stopPropagation();
+                if (productDetails.stock <= 0) return;
                 addToCart(productDetails.id);
                 const cartElement = document.querySelector("#cart-count");
                 UI.updateCartCount(cartElement);
             });
+        const button = document.getElementById("add-to-cart");
+        button.disabled = productDetails.stock <= 0;
+
         dispalyRelatedProducts(productDetails.category, productId);
     } catch (error) {
         console.log(error);

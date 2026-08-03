@@ -1,10 +1,10 @@
-import {addToCart, loadCart} from "./storage.js";
+import { addToCart, loadCart } from "./storage.js";
 
 function updateCartCount(cartElement) {
     let cart = loadCart();
 
     let count = 0;
-    cart.forEach(element => {
+    cart.forEach((element) => {
         count += element.quantity;
     });
 
@@ -23,10 +23,10 @@ function createProduct(product) {
     const productCard = document.createElement("div");
     productCard.classList.add("product");
 
-    productCard.addEventListener("click", e => {
+    productCard.addEventListener("click", (e) => {
         location.href = `product.html?id=${product.id}`;
     });
-    
+
     const productImage = document.createElement("img");
     productImage.classList.add("product-image");
     productImage.src = product.image;
@@ -49,7 +49,8 @@ function createProduct(product) {
 
     const productStock = document.createElement("span");
     productStock.classList.add("product-stock");
-    productStock.innerText = `Stock ${product.stock}`;
+    productStock.innerText =
+        product.stock > 0 ? `Stock ${product.stock}` :"Out of Stock";
 
     const productRating = document.createElement("span");
     productRating.classList.add("product-rating");
@@ -59,13 +60,19 @@ function createProduct(product) {
 
     const addToCartButton = document.createElement("button");
     addToCartButton.classList.add("add-to-cart");
-    addToCartButton.innerText = "Add to cart";
+    addToCartButton.innerText =
+        product.stock > 0 ? "Add to cart" : "Out of Stock";
 
-    addToCartButton.addEventListener("click", e => {
+    addToCartButton.disabled = product.stock <= 0;
+    addToCartButton.addEventListener("click", (e) => {
         e.stopPropagation();
+        if (product.stock <= 0) {
+            return;
+        }
         addToCart(product.id);
         const cartElement = document.querySelector("#cart-count");
         updateCartCount(cartElement);
+        addToCartButton.disabled = product.stock <= 0;
     });
 
     productCard.appendChild(productImage);
