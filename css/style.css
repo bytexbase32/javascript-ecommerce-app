@@ -370,6 +370,14 @@ main {
 }
 
 /* cart page */
+
+
+#cart-main {
+    min-height: calc(60.8vh);
+    margin: 12px auto;
+    padding: 10px 30px;
+}
+
 #cart-items {
     padding: 20px;
 }

@@ -1,15 +1,19 @@
-import { loadCart } from "./storage.js";
+import { loadCart, updateCart } from "./storage.js";
 import { getProducts } from "./api.js";
 import * as UI from "./ui.js";
 
 async function displayCartItems() {
     let cart = loadCart();
+    const cartItems = document.querySelector("#cart-items");
+
     if (cart.length === 0) {
         document.querySelector("#empty-cart-message").style.display = "block";
         document.querySelector("#cart-summary").style.display = "none";
+        cartItems.style.display = "none";
         return;
     }
     document.querySelector("#empty-cart-message").style.display = "none";
+    cartItems.style.display = "block";
 
     let products = await getProducts();
 
@@ -28,7 +32,6 @@ async function displayCartItems() {
         };
     });
 
-    const cartItems = document.querySelector("#cart-items");
     cartItems.innerHTML = "";
     cartProducts.forEach((item) => {
         cartItems.appendChild(createCartItem(item.product, item.quantity));
@@ -89,6 +92,10 @@ function createCartItem(product, quantity) {
     const removeBtn = document.createElement("button");
     removeBtn.classList.add("remove-btn");
     removeBtn.innerText = "Remove";
+    removeBtn.addEventListener("click", (e) => {
+        removeItem(product.id);
+        init();
+    });
 
     cartItem.appendChild(cartImage);
     cartItem.appendChild(cartInfo);
@@ -97,6 +104,12 @@ function createCartItem(product, quantity) {
     cartItem.appendChild(removeBtn);
 
     return cartItem;
+}
+
+function removeItem(id) {
+    let cart = loadCart();
+    cart = cart.filter((item) => item.id !== id);
+    updateCart(cart);
 }
 
 async function init() {

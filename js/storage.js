@@ -16,13 +16,16 @@ function addToCart(id) {
 
 function initCart() {
     let cart = localStorage.getItem("vanillaStore");
-    if (!cart) localStorage.setItem("vanillaStore", JSON.stringify([]));
+    if (!cart)
+        updateCart([]);
 }
 
+function updateCart(cart) {
+    localStorage.setItem("vanillaStore", JSON.stringify(cart));
+}
 function loadCart() {
     let cart = JSON.parse(localStorage.getItem("vanillaStore"));
     return cart;
 }
 
-
-export {loadCart, addToCart, initCart };
+export { loadCart, addToCart, initCart, updateCart };
