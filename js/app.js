@@ -71,6 +71,8 @@ function getMatching(match, products) {
 async function init() {
     try {
         initCart();
+        const cartElement = document.querySelector("#cart-count");
+        UI.updateCartCount(cartElement);
         products = await getProducts();
         if (products.length === 0) {
             productsContainer.innerHTML = "<p>No products available.</p>";

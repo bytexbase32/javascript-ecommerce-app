@@ -1,6 +1,15 @@
-import {addToCart} from "./storage.js";
+import {addToCart, loadCart} from "./storage.js";
 
+function updateCartCount(cartElement) {
+    let cart = loadCart();
 
+    let count = 0;
+    cart.forEach(element => {
+        count += element.quantity;
+    });
+
+    cartElement.innerText = count;
+}
 
 function renderProducts(productsContainer, products) {
     if (products.length <= 0) return;
@@ -55,6 +64,8 @@ function createProduct(product) {
     addToCartButton.addEventListener("click", e => {
         e.stopPropagation();
         addToCart(product.id);
+        const cartElement = document.querySelector("#cart-count");
+        updateCartCount(cartElement);
     });
 
     productCard.appendChild(productImage);
@@ -66,4 +77,4 @@ function createProduct(product) {
     return productCard;
 }
 
-export { createProduct, renderProducts };
+export { createProduct, renderProducts, updateCartCount, refreshCartCount };

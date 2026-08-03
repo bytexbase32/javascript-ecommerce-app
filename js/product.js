@@ -1,5 +1,5 @@
 import { getProducts } from "./api.js";
-import {addToCart} from "./storage.js";
+import {addToCart, initCart} from "./storage.js";
 import * as UI from "./ui.js";
 
 // Get the query string (e.g., "?product=shoes&size=10")
@@ -16,6 +16,11 @@ let productDetails = null;
 
 async function init() {
     try {
+
+        initCart();
+        const cartElement = document.querySelector("#cart-count");
+        UI.updateCartCount(cartElement);
+
         products = await getProducts();
 
         if (products.length === 0) {
@@ -52,6 +57,8 @@ async function init() {
             .addEventListener("click", (e) => {
                 e.stopPropagation();
                 addToCart(productDetails.id);
+                const cartElement = document.querySelector("#cart-count");
+                UI.updateCartCount(cartElement);
             });
         dispalyRelatedProducts(productDetails.category, productId);
     } catch (error) {
