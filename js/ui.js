@@ -1,4 +1,4 @@
-
+import {addToCart} from "./storage.js";
 
 
 
@@ -51,6 +51,11 @@ function createProduct(product) {
     const addToCartButton = document.createElement("button");
     addToCartButton.classList.add("add-to-cart");
     addToCartButton.innerText = "Add to cart";
+
+    addToCartButton.addEventListener("click", e => {
+        e.stopPropagation();
+        addToCart(product.id);
+    });
 
     productCard.appendChild(productImage);
     productCard.appendChild(productTitle);

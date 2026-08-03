@@ -1,4 +1,5 @@
 import { getProducts } from "./api.js";
+import {addToCart} from "./storage.js";
 import * as UI from "./ui.js";
 
 // Get the query string (e.g., "?product=shoes&size=10")
@@ -46,6 +47,12 @@ async function init() {
         document.getElementById("product-category").innerText =
             productDetails.category;
         document.getElementById("add-to-cart").innerText = "Add to Cart";
+        document
+            .getElementById("add-to-cart")
+            .addEventListener("click", (e) => {
+                e.stopPropagation();
+                addToCart(productDetails.id);
+            });
         dispalyRelatedProducts(productDetails.category, productId);
     } catch (error) {
         console.log(error);

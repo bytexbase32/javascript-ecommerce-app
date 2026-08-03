@@ -14,4 +14,4 @@ async function getProducts() {
     }
 }
 
-export {getProducts};
+export { getProducts};

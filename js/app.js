@@ -1,4 +1,5 @@
 import { getProducts } from "./api.js";
+import {initCart} from "./storage.js";
 import * as UI from "./ui.js";
 
 const productsContainer = document.getElementById("grid-container");
@@ -69,8 +70,8 @@ function getMatching(match, products) {
 
 async function init() {
     try {
+        initCart();
         products = await getProducts();
-
         if (products.length === 0) {
             productsContainer.innerHTML = "<p>No products available.</p>";
             return;
