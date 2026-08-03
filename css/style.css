@@ -412,7 +412,21 @@ main {
 
 .cart-quantity {
     margin-top: 10px;
-    font-size: 18px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.cart-quantity * {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cart-quantity button {
+    cursor: pointer;
 }
 
 .cart-total {

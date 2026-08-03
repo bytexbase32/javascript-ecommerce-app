@@ -48,8 +48,8 @@ async function displayCartItems() {
         subtotal += item.quantity * item.product.price;
     });
     itemsElement.innerText = items;
-    subTotalElement.innerText = `$${subtotal}`;
-    totalElement.innerText = `$${subtotal}`;
+    subTotalElement.innerText = `$${subtotal.toFixed(2)}`;
+    totalElement.innerText = `$${subtotal.toFixed(2)}`;
     document.querySelector("#cart-summary").style.display = "block";
 }
 
@@ -83,11 +83,34 @@ function createCartItem(product, quantity) {
 
     const cartQuantity = document.createElement("div");
     cartQuantity.classList.add("cart-quantity");
-    cartQuantity.innerText = `Quantity: ${quantity}`;
+
+    const quantityElement = document.createElement("span");
+    quantityElement.classList.add("quantity-value");
+    quantityElement.innerText = quantity;
+
+    const addQuantityElement = document.createElement("button");
+    addQuantityElement.classList.add("add-quantity");
+    addQuantityElement.innerText = "+";
+    addQuantityElement.addEventListener("click", () => {
+        editItem(1, product.id);
+        init();
+    });
+
+    const deleteQuantityElement = document.createElement("button");
+    deleteQuantityElement.classList.add("delete-quantity");
+    deleteQuantityElement.innerText = "-";
+    deleteQuantityElement.addEventListener("click", () => {
+        editItem(-1, product.id);
+        init();
+    });
+
+    cartQuantity.appendChild(deleteQuantityElement);
+    cartQuantity.appendChild(quantityElement);
+    cartQuantity.appendChild(addQuantityElement);
 
     const cartTotal = document.createElement("div");
     cartTotal.classList.add("cart-total");
-    cartTotal.innerText = `$${product.price * quantity}`;
+    cartTotal.innerText = `$${(product.price * quantity).toFixed(2)}`;
 
     const removeBtn = document.createElement("button");
     removeBtn.classList.add("remove-btn");
@@ -110,6 +133,20 @@ function removeItem(id) {
     let cart = loadCart();
     cart = cart.filter((item) => item.id !== id);
     updateCart(cart);
+}
+
+function editItem(value, id) {
+    let cart = loadCart();
+    let toRemove = false;
+    cart = cart.map((item) => {
+        if (item.id === id) {
+            item.quantity += value;
+            if (item.quantity === 0) toRemove = true;
+        }
+        return item;
+    });
+    updateCart(cart);
+    if (toRemove) removeItem(id);
 }
 
 async function init() {
