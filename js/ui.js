@@ -77,4 +77,4 @@ function createProduct(product) {
     return productCard;
 }
 
-export { createProduct, renderProducts, updateCartCount, refreshCartCount };
+export { createProduct, renderProducts, updateCartCount };

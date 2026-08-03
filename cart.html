@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+        <title>Cart</title>
+    </head>
+    <body>
+        <header>
+            <h1>Vanilla Store</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+            </nav>
+        </header>
+        <main>
+            <section id="hero">
+                <h2>Shopping Cart</h2>
+            </section>
+            <p id="empty-cart-message">Your cart is empty.</p>
+            <section id="cart-items">
+                <!--
+                <div class="cart-item">
+
+                    <img class="cart-image"
+                        src="assets/images/backpack.jpg"
+                        alt="Backpack">
+
+                    <div class="cart-info">
+                        <h3 class="cart-title">Backpack</h3>
+                        <p class="cart-category">Accessories</p>
+                        <p class="cart-price">$49.99</p>
+                    </div>
+
+                    <div class="cart-quantity">
+                        Quantity: 2
+                    </div>
+
+                    <div class="cart-total">
+                        $99.98
+                    </div>
+
+                    <button class="remove-btn">
+                        Remove
+                    </button>
+
+                </div>
+                -->
+            </section>
+            <section id="cart-summary">
+                <p>
+                    Items:
+                    <span id="summary-items">0</span>
+                </p>
+                <p>
+                    Subtotal:
+                    <span id="summary-subtotal">$0</span>
+                </p>
+
+                <p>Shipping: Free</p>
+
+                <p>
+                    Total:
+                    <span id="summary-total">$0</span>
+                </p>
+
+                <div id="cart-actions">
+                    <a href="index.html"> Continue Shopping </a>
+
+                    <button id="checkout-btn">Checkout</button>
+                </div>
+            </section>
+        </main>
+        <footer>© 2026 Vanilla Store. All rights reserved.</footer>
+
+        <script type="module" src="./js/cart.js"></script>
+    </body>
+</html>
